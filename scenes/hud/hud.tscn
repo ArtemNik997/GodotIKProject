@@ -14,7 +14,6 @@ mouse_filter = 1
 script = ExtResource("1_48c2t")
 
 [node name="PlayerVars" type="TextEdit" parent="." unique_id=1869562572]
-visible = false
 layout_mode = 0
 offset_right = 180.0
 offset_bottom = 187.0
