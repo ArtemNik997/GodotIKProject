@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://6kqy80gkwyjl" path="res://scenes/entities/player/player.tscn" id="1_377w7"]
 [ext_resource type="Material" uid="uid://p72dqsvfya4g" path="res://graphics/prototype-textures/prototype-texture.tres" id="2_bovvr"]
-[ext_resource type="PackedScene" uid="uid://d1iqiuopkfjvr" path="res://scenes/entities/npc/enemy/enemy.tscn" id="3_b2cq8"]
 [ext_resource type="PackedScene" uid="uid://dky3pi82i2hnn" path="res://scenes/entities/target_holder/target_holder.tscn" id="4_d4w6o"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ftxyw"]
@@ -19,12 +18,6 @@ sky = SubResource("Sky_377w7")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_bovvr"]
-vertices = PackedVector3Array(-24.75, 9.5, -24.75, -24.75, 9.5, -21.75, -24.25, 9.5, -24.5, -5.25, 0.5, 7.25, -5, 0.5, 9.25, -2.75, 0.5, 9.25, -2.5, 0.5, 7.25, -10.5, 0.5, 7.25, 3.25, 0.5, 7, 3.25, 0.5, -24, -24, 0.5, -24, 2.5, 0.5, 7.25, -24, 0.5, 8.75, -10.75, 0.5, 9, 24.25, 0.5, 7, 24.25, 0.5, -24, 3, 0.5, 7.5, 3, 0.5, 12.5, 3, 0.5, 24.25, 24.25, 0.5, 24.25, -7.5, 1, 12.5, -5.75, 1, 12.25, -5.5, 1, 11.75, -5.75, 1, 7.75, -10.25, 1, 7.75, -10.25, 1, 12.25, -2.25, 2.5, 7.75, -2.25, 2.5, 12.25, 2.25, 2.5, 12.25, 2.25, 2.5, 7.75, -24, 0.5, 11.5, -10.75, 0.5, 11.25, -5, 0.5, 12.5, -2.5, 0.5, 13, -5.5, 0.5, 13, -11, 0.5, 24.25, -10.5, 0.5, 13, 2.5, 0.5, 13, -10.75, 0.5, 12.5, -24, 0.5, 24.25)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(3, 7, 8), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(8, 11, 6), PackedInt32Array(8, 6, 3), PackedInt32Array(13, 12, 7), PackedInt32Array(7, 12, 10), PackedInt32Array(9, 15, 8), PackedInt32Array(8, 15, 14), PackedInt32Array(16, 11, 8), PackedInt32Array(17, 16, 8), PackedInt32Array(17, 8, 18), PackedInt32Array(18, 8, 14), PackedInt32Array(18, 14, 19), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 25), PackedInt32Array(22, 25, 23), PackedInt32Array(23, 25, 24), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(31, 30, 13), PackedInt32Array(13, 30, 12), PackedInt32Array(4, 5, 32), PackedInt32Array(32, 5, 33), PackedInt32Array(32, 33, 34), PackedInt32Array(34, 33, 18), PackedInt32Array(34, 18, 35), PackedInt32Array(35, 36, 34), PackedInt32Array(37, 17, 18), PackedInt32Array(35, 38, 36), PackedInt32Array(33, 37, 18), PackedInt32Array(38, 35, 31), PackedInt32Array(31, 35, 30), PackedInt32Array(30, 35, 39)]
-agent_radius = 0.25
-agent_max_slope = 60.0
-
 [node name="Level" type="Node3D" unique_id=2139346061]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1241335720]
@@ -36,40 +29,34 @@ shadow_enabled = true
 
 [node name="Entities" type="Node3D" parent="." unique_id=1540255887]
 
-[node name="Enemy" parent="Entities" unique_id=353241476 instance=ExtResource("3_b2cq8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.9027147, -9.536743e-07, -2.699562)
-
 [node name="Player" parent="Entities" unique_id=776986641 instance=ExtResource("1_377w7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.095705, 0, 5.2199197)
 
 [node name="TargetHolder" parent="Entities" unique_id=1683172554 instance=ExtResource("4_d4w6o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8006482, -24.455225)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=655673237]
-navigation_mesh = SubResource("NavigationMesh_bovvr")
+[node name="Environment" type="Node3D" parent="." unique_id=774688454]
 
-[node name="Environment" type="Node3D" parent="NavigationRegion3D" unique_id=774688454]
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D/Environment" unique_id=694712310]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Environment" unique_id=694712310]
 use_collision = true
 
-[node name="Walls" type="CSGBox3D" parent="NavigationRegion3D/Environment/CSGCombiner3D" unique_id=373534714]
+[node name="Walls" type="CSGBox3D" parent="Environment/CSGCombiner3D" unique_id=373534714]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 size = Vector3(50, 10, 50)
 material = ExtResource("2_bovvr")
 
-[node name="InnerSpace" type="CSGBox3D" parent="NavigationRegion3D/Environment/CSGCombiner3D" unique_id=1274124233]
+[node name="InnerSpace" type="CSGBox3D" parent="Environment/CSGCombiner3D" unique_id=1274124233]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 operation = 2
 size = Vector3(49, 10, 49)
 material = ExtResource("2_bovvr")
 
-[node name="Block" type="CSGBox3D" parent="NavigationRegion3D/Environment/CSGCombiner3D" unique_id=1954607431]
+[node name="Block" type="CSGBox3D" parent="Environment/CSGCombiner3D" unique_id=1954607431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
 size = Vector3(5, 2, 5)
 material = ExtResource("2_bovvr")
 
-[node name="Block2" type="CSGBox3D" parent="NavigationRegion3D/Environment/CSGCombiner3D" unique_id=1584470061]
+[node name="Block2" type="CSGBox3D" parent="Environment/CSGCombiner3D" unique_id=1584470061]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.28087723, 10)
 size = Vector3(5, 0.6, 5)
 material = ExtResource("2_bovvr")
