@@ -2,7 +2,7 @@
 
 A third-person game prototype built with **Godot 4.6**, focused on **procedural IK animation** for the character: aiming, holding a weapon with both hands, rotating the torso to follow the camera, and enemies tracking the player with their heads. The project shows how to build such a system with Godot's built-in IK modifiers (`TwoBoneIK3D`, `CCDIK3D`, `CopyTransformModifier3D`) and connect it to a state machine and an `AnimationTree`.
 
-![Gameplay Demo](/docs/demos/Gameplay.gif)
+https://github.com/user-attachments/assets/df7d3732-f0d3-4049-a7e9-0e56b2def3e3
 
 ## Features
 
@@ -17,7 +17,7 @@ A third-person game prototype built with **Godot 4.6**, focused on **procedural 
 - **Targets.** They are destroyed when hit.
 - **Debug HUD** with the flags "near wall", "can climb" and "can hop up".
 
-![IK Demo](/docs/demos/DemoFixedCamera.gif)
+https://github.com/user-attachments/assets/fe85b455-55c3-4df0-956e-57044372e9f0
 
 ## Controls
 
